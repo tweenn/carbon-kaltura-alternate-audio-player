@@ -16,8 +16,10 @@
 	},
 	"dependencies": {
 		"@carbon/ibmdotcom-services": "^1.37.0",
+		"@carbon/ibmdotcom-web-components": "^1.22.0",
 		"@carbon/icon-helpers": "^10.32.0",
 		"@carbon/icons": "^11.7.0",
+		"carbon-web-components": "^1.21.0",
 		"htm": "^3.1.1",
 		"lit": "^2.3.1",
 		"preact": "^10.10.6"

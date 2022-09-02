@@ -9,7 +9,7 @@ import {
 	state
 } from 'lit/decorators.js';
 
-import { styleMap } from 'lit/directives/style-map.js';
+// import { styleMap } from 'lit/directives/style-map.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
 import audioPlayerStyle from './audio-player-style';
@@ -23,10 +23,11 @@ import {
 
 @customElement('audio-player-alternate')
 export class AudioPlayerAlternate extends LitElement {
-	@property()
-	iconStyle = {
-		color: '#000'
-	};
+	// @property()
+	// iconStyle = {
+	// 	color: '#000'
+	// };
+	// style=${styleMap(this.iconStyle)}
 
 	@property()
 	mediaId = '1_gp572bda';
@@ -65,6 +66,7 @@ export class AudioPlayerAlternate extends LitElement {
 
 	async getMediaInformation () {
 		this.mediaInformation = await KalturaPlayerAPI.api(this.mediaId);
+		this.mediaCurrentTime = this.mediaInformation.duration;
 	}
 
 	standarizePlayer () {
@@ -133,21 +135,22 @@ export class AudioPlayerAlternate extends LitElement {
 
 	render() {
 		return html`
-			<p>
+			<link rel='stylesheet' href='https://1.www.s81c.com/common/carbon-for-ibm-dotcom/tag/v1/latest/plex.css' />
+			<span class='player-holder ${this.isPlaying ? 'is-playing' : 'is-paused'}'>
 				<a
-					id='player-control-play'
 					@click='${this.handlePlay}'
-					style=${styleMap(this.iconStyle)}
+					role='button'
+					part='button'
 				>
 					${(
 						(this.isPlayerInitiated) && (this.isPlaying))
-							? unsafeHTML(iconPauseFilledHtml)
-							: unsafeHTML(iconPlayFilledHtml)
+						? unsafeHTML(iconPauseFilledHtml)
+						: unsafeHTML(iconPlayFilledHtml)
 					}
 				</a>
-				<span>${KalturaPlayerAPI.getMediaDuration(this.mediaCurrentTime)}</span>
-			</p>
-			<link rel="stylesheet" href="https://1.www.s81c.com/common/carbon-for-ibm-dotcom/tag/v1/latest/plex.css" />
+
+				${KalturaPlayerAPI.getMediaDuration(this.mediaCurrentTime)}
+			</span>
 			<slot />
 		`;
 	}
