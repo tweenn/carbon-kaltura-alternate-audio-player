@@ -18,7 +18,9 @@
 		"@carbon/ibmdotcom-services": "^1.37.0",
 		"@carbon/icon-helpers": "^10.32.0",
 		"@carbon/icons": "^11.7.0",
-		"lit": "^2.3.1"
+		"htm": "^3.1.1",
+		"lit": "^2.3.1",
+		"preact": "^10.10.6"
 	},
 	"devDependencies": {
 		"@parcel/transformer-sass": "2.7.0",
@@ -31,15 +33,15 @@
 		"web": {
 			"optimize": true,
 			"source": [
-				"src/404.html"
+				"src/demo/404.html"
 			],
-			"distDir": "./dist/serve/",
+			"distDir": "./dist/demo/",
 			"context": "browser"
 		},
 		"component": {
 			"optimize": true,
 			"source": [
-				"src/index.ts"
+				"src/audio-player/index.ts"
 			],
 			"distDir": "./dist/build/",
 			"context": "browser"

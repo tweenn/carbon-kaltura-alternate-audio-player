@@ -24,7 +24,9 @@ import {
 @customElement('audio-player-alternate')
 export class AudioPlayerAlternate extends LitElement {
 	@property()
-	iconStyle = { color: '#000'};
+	iconStyle = {
+		color: '#000'
+	};
 
 	@property()
 	mediaId = '1_gp572bda';
@@ -59,27 +61,34 @@ export class AudioPlayerAlternate extends LitElement {
 		super();
 
 		this.getMediaInformation();
-
-		this.playerId = this.holderId + this.playerId;
-
-		if (this.getAttribute('id') === null) {
-			this.setAttribute('id', this.holderId);
-		} else {
-			this.holderId = this.getAttribute('id');
-		}
-
-		const elementMediaPlayer = document.createElement('div');
-		elementMediaPlayer.id = this.playerId;
-
-		this.appendChild(elementMediaPlayer);
 	}
 
 	async getMediaInformation () {
 		this.mediaInformation = await KalturaPlayerAPI.api(this.mediaId);
 	}
 
+	standarizePlayer () {
+		this.playerId = this.holderId + this.playerId;
+
+		if (this.getAttribute('id') === null) {
+			this.setAttribute('id', this.holderId);
+		}
+
+		this.holderId = this.getAttribute('id') || this.holderId;
+	}
+
+	createChildPlayerElement () {
+		const elementMediaPlayer = document.createElement('div');
+		elementMediaPlayer.id = this.playerId;
+
+		this.appendChild(elementMediaPlayer);
+	}
+
 	async embbedPlayer () {
 		const context = this;
+
+		this.standarizePlayer();
+		this.createChildPlayerElement();
 
   		const embedAnswer = await KalturaPlayerAPI.embedMedia(
 			this.mediaId,
@@ -92,7 +101,7 @@ export class AudioPlayerAlternate extends LitElement {
         const kdp = await embedAnswer.kWidget();
         this.kalturaDigitalPlayer = kdp;
 
-		document.getElementById(this.playerId).click();
+		document.getElementById(this.playerId)?.click();
 		
 		this.isPlayerReady = true;
 		this.isPlaying = true;
