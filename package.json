@@ -1,0 +1,45 @@
+{
+	"name": "carbon-kaltura-alternate-audio-player",
+	"version": "1.0.0",
+	"description": "An IBM Carbon Alternate Audio Player based on Kaltura",
+	"main": "src/index.ts",
+	"repository": "git@github.com:tweenn/carbon-kaltura-alternate-audio-player.git",
+	"author": "Felipe Zuntini <felipezuntini@hotmail.com>",
+	"license": "MIT",
+	"private": false,
+	"scripts": {
+		"watch": "parcel watch",
+		"serve": "parcel serve --port 3456 --no-source-maps",
+		"build": "parcel build --no-source-maps"
+	},
+	"devDependencies": {
+		"@parcel/transformer-sass": "2.7.0",
+		"buffer": "^6.0.3",
+		"parcel": "^2.7.0",
+		"process": "^0.11.10"
+	},
+	"targets": {
+		"web": {
+			"optimize": true,
+			"source": [
+				"src/404.html"
+			],
+			"distDir": "./dist/serve/",
+			"context": "browser"
+		},
+		"component": {
+			"optimize": true,
+			"source": [
+				"src/index.ts"
+			],
+			"distDir": "./dist/build/",
+			"context": "browser"
+		}
+	},
+	"dependencies": {
+		"@carbon/ibmdotcom-services": "^1.37.0",
+		"@carbon/icon-helpers": "^10.32.0",
+		"@carbon/icons": "^11.7.0",
+		"lit": "^2.3.1"
+	}
+}
