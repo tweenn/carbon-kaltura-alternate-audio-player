@@ -11,7 +11,7 @@
 		"watch": "parcel watch",
 		"serve": "parcel serve --port 3456 --no-source-maps --public-url /",
 		"build": "parcel build --no-source-maps --public-url https://tweenn.github.io/carbon-kaltura-alternate-audio-player/",
-		"push": "push-dir --dir=dist/serve --branch=gh-pages --force --verbose --cleanup",
+		"push": "push-dir --dir=dist/demo --branch=gh-pages --force --verbose --cleanup",
 		"deploy": "sh __devops__/build.sh"
 	},
 	"dependencies": {
