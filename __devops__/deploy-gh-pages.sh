@@ -2,4 +2,4 @@
 
 rm -rf ./dist;
 yarn build;
-yarn push;
+yarn push:ghpages;
