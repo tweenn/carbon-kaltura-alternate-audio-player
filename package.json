@@ -13,8 +13,8 @@
 		"build": "parcel build --no-cache --no-source-maps --public-url https://tweenn.github.io/carbon-kaltura-alternate-audio-player/",
 		"push:ghpages": "push-dir --dir=dist/demo --branch=gh-pages --force --verbose --cleanup",
 		"push:package": "push-dir --dir=dist/package --branch=package --force --verbose --cleanup",
-		"deploy:ghpages": "sh __devops__/deploy-gh-pages.sh",
-		"deploy:package": "sh __devops__/deploy-package.sh"
+		"deploy:ghpages": "sh __devops__/deploy/gh-pages.sh",
+		"deploy:package": "sh __devops__/deploy/package.sh"
 	},
 	"dependencies": {
 		"@carbon/ibmdotcom-services": "^1.37.0",
