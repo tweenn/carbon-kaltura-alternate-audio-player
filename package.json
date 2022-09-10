@@ -9,8 +9,10 @@
 	"private": false,
 	"scripts": {
 		"watch": "parcel watch",
-		"serve": "parcel serve --port 3456 --no-source-maps --public-url /",
-		"build": "parcel build --no-cache --no-source-maps --public-url https://tweenn.github.io/carbon-kaltura-alternate-audio-player/",
+		"build": "gulp render",
+		"serve": "gulp clean && yarn parcel:serve",
+		"parcel:serve": "parcel serve --port 3456 --no-source-maps --public-url /",
+		"parcel:build": "parcel build --no-cache --no-source-maps --public-url https://tweenn.github.io/carbon-kaltura-alternate-audio-player/",
 		"push:ghpages": "push-dir --dir=dist/demo --branch=gh-pages --force --verbose --cleanup",
 		"push:package": "push-dir --dir=dist/package --branch=package --force --verbose --cleanup",
 		"deploy:ghpages": "sh __devops__/deploy/gh-pages.sh",
@@ -29,6 +31,10 @@
 	"devDependencies": {
 		"@parcel/transformer-sass": "2.7.0",
 		"buffer": "^6.0.3",
+		"fs-extra": "^10.1.0",
+		"gulp": "^4.0.2",
+		"gulp-cli": "^2.3.0",
+		"gulp-tap": "^2.0.0",
 		"parcel": "^2.7.0",
 		"process": "^0.11.10",
 		"push-dir": "^0.4.1"
