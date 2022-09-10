@@ -9,7 +9,6 @@ import {
 	state
 } from 'lit/decorators.js';
 
-// import { styleMap } from 'lit/directives/style-map.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
 import audioPlayerStyle from './audio-player-style';
@@ -23,12 +22,6 @@ import {
 
 @customElement('audio-player-alternate')
 export class AudioPlayerAlternate extends LitElement {
-	// @property()
-	// iconStyle = {
-	// 	color: '#000'
-	// };
-	// style=${styleMap(this.iconStyle)}
-
 	@property()
 	mediaId = '1_gp572bda';
 
@@ -43,7 +36,7 @@ export class AudioPlayerAlternate extends LitElement {
 
 	@state()
 	private kalturaDigitalPlayer = {
-		sendNotification: () => {}
+		sendNotification: (notification = '') => {}
 	};
 
 	@state()
@@ -99,8 +92,8 @@ export class AudioPlayerAlternate extends LitElement {
 				autoPlay: true
 			}
 		);
-
         const kdp = await embedAnswer.kWidget();
+
         this.kalturaDigitalPlayer = kdp;
 
 		document.getElementById(this.playerId)?.click();
@@ -109,7 +102,7 @@ export class AudioPlayerAlternate extends LitElement {
 		this.isPlaying = true;
 
 		kdp.addJsListener('playerUpdatePlayhead.ibm', function (time = 0) {
-			context.mediaCurrentTime = Math.floor(time);
+			context.mediaCurrentTime = context.mediaInformation.duration - Math.floor(time);
 		});
 
 		kdp.addJsListener('playerPlayEnd.ibm', function () {

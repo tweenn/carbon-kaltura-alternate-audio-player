@@ -28,10 +28,6 @@ const makeIcon = (icon = { attrs: {}}) => {
 const Card = () => {
 	return html`
 		<dds-card>
-			<dds-card-eyebrow>
-				PodCast
-			</dds-card-eyebrow>
-
 			<dds-card-heading style='margin-bottom: 0;'>
 				<dds-quote inverse mark-type="double-curved"
 					style='
@@ -42,10 +38,10 @@ const Card = () => {
 					'
 				>
 					Business can't succeed in societies that are failing.
-					<dds-quote-source-heading>
+				</dds-quote>
+				<dds-quote-source-heading>
 						This is the first line of source
 					</dds-quote-source-heading>
-				</dds-quote>
 			</dds-card-heading>
 
 			<dds-card-footer slot="footer">
