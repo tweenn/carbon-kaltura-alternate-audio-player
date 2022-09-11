@@ -32,7 +32,7 @@ export class AudioPlayerAlternate extends LitElement {
 	// partnerId = 1773841;
 
 	@property()
-	useMetrics = true;
+	useIbmMetrics = true;
 
 	@state()
 	private isPlayerInitiated = false;
@@ -100,7 +100,7 @@ export class AudioPlayerAlternate extends LitElement {
 			{
 				autoPlay: true
 			},
-			this.useMetrics,
+			this.useIbmMetrics,
 			(kdp: any) => {
 				context.isPlayerReady = true;
 

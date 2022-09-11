@@ -38,10 +38,10 @@ const Card = () => {
 					'
 				>
 					Business can't succeed in societies that are failing.
-				</dds-quote>
-				<dds-quote-source-heading>
+					<dds-quote-source-heading>
 						This is the first line of source
 					</dds-quote-source-heading>
+				</dds-quote>
 			</dds-card-heading>
 
 			<dds-card-footer slot="footer">
