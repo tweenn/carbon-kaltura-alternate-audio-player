@@ -25,6 +25,15 @@ export class AudioPlayerAlternate extends LitElement {
 	@property()
 	mediaId = '1_gp572bda';
 
+	// @property()
+	// uiConfId = 27941801;
+
+	// @property()
+	// partnerId = 1773841;
+
+	@property()
+	useMetrics = true;
+
 	@state()
 	private isPlayerInitiated = false;
 
@@ -90,25 +99,27 @@ export class AudioPlayerAlternate extends LitElement {
 			this.playerId,
 			{
 				autoPlay: true
+			},
+			this.useMetrics,
+			(kdp: any) => {
+				context.isPlayerReady = true;
+
+				kdp?.addJsListener('playerUpdatePlayhead.alternate-player', function (time = 0) {
+					context.mediaCurrentTime = context.mediaInformation.duration - Math.floor(time);
+				});
+
+				kdp?.addJsListener('playerPlayEnd.alternate-player', function () {
+					context.isPlaying = false;
+					context.mediaCurrentTime = context.mediaInformation.duration;
+				});
 			}
 		);
-        const kdp = await embedAnswer.kWidget();
 
-        this.kalturaDigitalPlayer = kdp;
+        this.kalturaDigitalPlayer = await embedAnswer.kWidget();
 
 		document.getElementById(this.playerId)?.click();
-		
-		this.isPlayerReady = true;
+
 		this.isPlaying = true;
-
-		kdp.addJsListener('playerUpdatePlayhead.ibm', function (time = 0) {
-			context.mediaCurrentTime = context.mediaInformation.duration - Math.floor(time);
-		});
-
-		kdp.addJsListener('playerPlayEnd.ibm', function () {
-			context.isPlaying = false;
-			context.mediaCurrentTime = context.mediaInformation.duration;
-		});
 	}
 
 	handlePlay () {
