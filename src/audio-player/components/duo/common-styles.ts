@@ -42,14 +42,14 @@ export default css`
 
 	.icon {
 		box-sizing: border-box;
-		width: 48px;
+		width: 32px;
 		height: 48px;
 		color: inherit;
 	}
 
 	.icon svg {
-		padding: 8px;
-		width: 32px;
-		height: 32px;
+		padding: 14px 6px;
+		width: 20px;
+		height: 20px;
 	}
 `;
