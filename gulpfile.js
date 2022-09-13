@@ -9,7 +9,8 @@ const legalsHeader = require('./__devops__/legals')(IBMenv).trim();
 
 const paths = {
 	dist: './dist',
-	demo: './dist/demo'
+	demo: './dist/demo',
+	package: './dist/package'
 };
 
 gulp.task('render:parcel', (done) => {
@@ -62,11 +63,25 @@ gulp.task('render:legals', () => {
 
 					return (finalChunk !== '\n');
 				}).join('/**');
+
+				// Fix multiple spaces
+				while (content.includes('  ')) {
+					content = content.split('  ').join(' ');
+				}
 			}
 
 			file.contents = Buffer.from(`${legalsHeader}\n${content}`);
 		}))
 		.pipe(gulp.dest(paths.dist));
+});
+
+gulp.task('clean:package', (done) => {
+	fs.rmSync(`${paths.package}/demo`, {
+		recursive: true,
+		force: true
+	});
+
+	done();
 });
 
 gulp.task('clean:dist', (done) => {
@@ -88,7 +103,8 @@ gulp.task('render',
 	gulp.series(
 		'clean',
 		'render:parcel',
-		'render:legals'
+		'render:legals',
+		'clean:package'
 	)
 );
 
