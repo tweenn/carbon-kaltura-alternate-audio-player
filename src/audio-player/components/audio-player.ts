@@ -9,30 +9,52 @@ import {
 	state
 } from 'lit/decorators.js';
 
-import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-
 import audioPlayerStyle from './audio-player-style';
 
 import { KalturaPlayer as KalturaPlayerAPI } from '@carbon/ibmdotcom-services';
 
-import {
-	playFilled as iconPlayFilledHtml,
-	pauseFilled as iconPauseFilledHtml,
-} from './audio-player-icons';
+import './duo/audio-player';
+import './duo/download-button';
+
+import plex from 'https://1.www.s81c.com/common/carbon-for-ibm-dotcom/tag/v1/latest/plex.css';
 
 @customElement('audio-player-alternate')
 export class AudioPlayerAlternate extends LitElement {
 	@property()
 	mediaId = '1_gp572bda';
 
-	// @property()
-	// uiConfId = 27941801;
+	@property()
+	uiConfId = 27941801;
 
-	// @property()
-	// partnerId = 1773841;
+	@property()
+	partnerId = 1773841;
 
 	@property()
 	useIbmMetrics = true;
+
+	@property()
+	layout = 'carbon';
+
+	@property()
+	id = 'my-media';
+
+	@property()
+	playerAriaLabel = 'Play: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain" - 1:01 min';
+
+	@property()
+	transcriptUrl = '';
+
+	@property()
+	transcriptFileName = 'no.name';
+
+	@property()
+	transcriptText = '(TXT, 112KB)';
+
+	@property()
+	transcriptIcon = 'quote'; // 'quotes', 'download', 'file'
+
+	@property()
+	transcriptAriaLabel = 'Download Transcript for: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain"';
 
 	@state()
 	private isPlayerInitiated = false;
@@ -72,13 +94,13 @@ export class AudioPlayerAlternate extends LitElement {
 	}
 
 	standarizePlayer () {
-		this.playerId = this.holderId + this.playerId;
-
 		if (this.getAttribute('id') === null) {
 			this.setAttribute('id', this.holderId);
 		}
 
 		this.holderId = this.getAttribute('id') || this.holderId;
+
+		this.playerId = this.holderId + this.playerId;
 	}
 
 	createChildPlayerElement () {
@@ -115,7 +137,7 @@ export class AudioPlayerAlternate extends LitElement {
 			}
 		);
 
-        this.kalturaDigitalPlayer = await embedAnswer.kWidget();
+		this.kalturaDigitalPlayer = await embedAnswer.kWidget();
 
 		document.getElementById(this.playerId)?.click();
 
@@ -130,32 +152,43 @@ export class AudioPlayerAlternate extends LitElement {
 		} else if (this.isPlayerReady) {
 			if (this.isPlaying) {
 				this.kalturaDigitalPlayer.sendNotification('doPause');
+				this.isPlaying = false;
 			} else {
 				this.kalturaDigitalPlayer.sendNotification('doPlay');
+				this.isPlaying = true;
 			}
-			this.isPlaying = !this.isPlaying;
 		}
 	}
 
 	render() {
 		return html`
-			<link rel='stylesheet' href='https://1.www.s81c.com/common/carbon-for-ibm-dotcom/tag/v1/latest/plex.css' />
-			<span class='player-holder ${this.isPlaying ? 'is-playing' : 'is-paused'}'>
-				<a
-					@click='${this.handlePlay}'
-					role='button'
-					part='button'
-				>
-					${(
-						(this.isPlayerInitiated) && (this.isPlaying))
-						? unsafeHTML(iconPauseFilledHtml)
-						: unsafeHTML(iconPlayFilledHtml)
+			<div class='audio-player ${this.isPlaying ? 'is-playing' : 'is-paused'}'>
+				<div class='audio-player--holder'>
+					<audio-player-alternate-player-duo
+						@click-play='${() => {
+							this.handlePlay();
+						}}'
+						isPlayerInitiated='${this.isPlayerInitiated}'
+						isPlaying='${this.isPlaying}'
+						mediaCurrentTime='${this.mediaCurrentTime}'
+						ariaLabel='${this.playerAriaLabel}'
+					></audio-player-alternate-player-duo>
+					${
+						this.transcriptUrl !== ''
+						? html`
+							<audio-player-alternate-download-button-duo
+								transcriptUrl='${this.transcriptUrl}'
+								transcriptFileName='${this.transcriptFileName}'
+								transcriptText='${this.transcriptText}'
+								transcriptIcon='${this.transcriptIcon}'
+								ariaLabel='${this.transcriptAriaLabel}'
+							></audio-player-alternate-download-button-duo>
+						`
+						: ''
 					}
-				</a>
-
-				${KalturaPlayerAPI.getMediaDuration(this.mediaCurrentTime)}
-			</span>
+				</div>
+			</div>
 			<slot />
 		`;
 	}
-};
+}
