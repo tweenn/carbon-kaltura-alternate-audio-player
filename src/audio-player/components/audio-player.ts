@@ -16,6 +16,9 @@ import { KalturaPlayer as KalturaPlayerAPI } from '@carbon/ibmdotcom-services';
 import './duo/audio-player';
 import './duo/download-button';
 
+import './carbon/audio-player';
+import './carbon/download-button';
+
 import plex from 'https://1.www.s81c.com/common/carbon-for-ibm-dotcom/tag/v1/latest/plex.css';
 
 @customElement('audio-player-alternate')
@@ -164,18 +167,18 @@ export class AudioPlayerAlternate extends LitElement {
 		return html`
 			<div class='audio-player ${this.isPlaying ? 'is-playing' : 'is-paused'}'>
 				<div class='audio-player--holder'>
-					<audio-player-alternate-player-duo
-						@click-play='${() => {
-							this.handlePlay();
-						}}'
-						isPlayerInitiated='${this.isPlayerInitiated}'
-						isPlaying='${this.isPlaying}'
-						mediaCurrentTime='${this.mediaCurrentTime}'
-						ariaLabel='${this.playerAriaLabel}'
-					></audio-player-alternate-player-duo>
 					${
-						this.transcriptUrl !== ''
+						(this.layout === 'duo')
 						? html`
+							<audio-player-alternate-player-duo
+								@click-play='${() => {
+									this.handlePlay();
+								}}'
+								isPlayerInitiated='${this.isPlayerInitiated}'
+								isPlaying='${this.isPlaying}'
+								mediaCurrentTime='${this.mediaCurrentTime}'
+								ariaLabel='${this.playerAriaLabel}'
+							></audio-player-alternate-player-duo>
 							<audio-player-alternate-download-button-duo
 								transcriptUrl='${this.transcriptUrl}'
 								transcriptFileName='${this.transcriptFileName}'
@@ -183,6 +186,30 @@ export class AudioPlayerAlternate extends LitElement {
 								transcriptIcon='${this.transcriptIcon}'
 								ariaLabel='${this.transcriptAriaLabel}'
 							></audio-player-alternate-download-button-duo>
+						`
+						: ''
+					}
+					${
+						(this.layout === 'carbon')
+						? html`
+							<audio-player-alternate-player-carbon
+								@click-play='${() => {
+									this.handlePlay();
+								}}'
+								isPlayerInitiated='${this.isPlayerInitiated}'
+								isPlaying='${this.isPlaying}'
+								mediaCurrentTime='${this.mediaCurrentTime}'
+								ariaLabel='${this.playerAriaLabel}'
+							>
+							</audio-player-alternate-player-carbon>
+							<audio-player-alternate-download-button-carbon
+								transcriptUrl='${this.transcriptUrl}'
+								transcriptFileName='${this.transcriptFileName}'
+								transcriptText='${this.transcriptText}'
+								transcriptIcon='${this.transcriptIcon}'
+								ariaLabel='${this.transcriptAriaLabel}'
+							>
+							</audio-player-alternate-download-button-carbon>
 						`
 						: ''
 					}

@@ -65,3 +65,19 @@ Duo.args = {
 	transcriptAriaLabel: 'Download Transcript for: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain"'
 };
 
+export const Carbon = Template.bind({});
+Carbon.args = {
+	id: 'my-media',
+	mediaId: '1_gp572bda',
+	uiConfId: 27941801,
+	partnerId: 1773841,
+	useIbmMetrics: false,
+	layout: 'carbon',
+	playerAriaLabel: 'Play: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain" - 1:01 min',
+	transcriptUrl: './transcript.txt',
+	transcriptFileName: 'test-transcript.txt',
+	transcriptText: '(TXT, -1KB)',
+	transcriptIcon: 'quote',
+	transcriptAriaLabel: 'Download Transcript for: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain"'
+};
+
