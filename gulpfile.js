@@ -15,7 +15,7 @@ const paths = {
 gulp.task('render:parcel', (done) => {
 	const { execSync } = require('child_process');
 
-	execSync('yarn parcel:build > /dev/null');
+	execSync('yarn build:package > /dev/null');
 
 	done();
 });
