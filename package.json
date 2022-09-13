@@ -12,14 +12,11 @@
 		"build:demo": "parcel build --no-cache --no-source-maps --public-url /",
 		"build:package": "parcel build --no-cache --no-source-maps --public-url /",
 		"build:storybook": "gulp clean && build-storybook --output-dir ./dist/storybook",
-
 		"serve:demo": "gulp clean && parcel serve --port 3456 --no-source-maps --public-url /",
 		"serve:storybook": "start-storybook -p 6006",
-		
 		"push:ghpages": "push-dir --dir=dist/storybook --branch=gh-pages --force --verbose --cleanup",
 		"push:package": "push-dir --dir=dist/package --branch=package --force --verbose --cleanup",
 		"push:demo": "gulp deploy:surge",
-		
 		"deploy:demo": "sh __devops__/deploy/demo.sh",
 		"deploy:ghpages": "sh __devops__/deploy/gh-pages.sh",
 		"deploy:package": "sh __devops__/deploy/package.sh"
@@ -37,6 +34,7 @@
 	"devDependencies": {
 		"@babel/core": "^7.19.0",
 		"@parcel/transformer-sass": "2.7.0",
+		"@storybook/addon-a11y": "^6.5.11",
 		"@storybook/addon-actions": "^6.5.10",
 		"@storybook/addon-essentials": "^6.5.10",
 		"@storybook/addon-links": "^6.5.10",
