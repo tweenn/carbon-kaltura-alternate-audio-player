@@ -8,15 +8,18 @@
 	"license": "MIT",
 	"private": false,
 	"scripts": {
-		"watch": "parcel watch",
 		"build": "gulp render",
-		"serve": "gulp clean && yarn parcel:serve",
+		"build:storybook": "build-storybook --output-dir ./dist/storybook",
+		"storybook": "start-storybook -p 6006",
+		"demo": "gulp clean && yarn parcel:serve",
 		"parcel:serve": "parcel serve --port 3456 --no-source-maps --public-url /",
-		"parcel:build": "parcel build --no-cache --no-source-maps --public-url https://tweenn.github.io/carbon-kaltura-alternate-audio-player/",
-		"push:ghpages": "push-dir --dir=dist/demo --branch=gh-pages --force --verbose --cleanup",
+		"parcel:build": "parcel build --no-cache --no-source-maps --public-url /",
+		"parcel:build:old": "parcel build --no-cache --no-source-maps --public-url https://tweenn.github.io/carbon-kaltura-alternate-audio-player/",
+		"push:ghpages": "push-dir --dir=dist/storybook --branch=gh-pages --force --verbose --cleanup",
 		"push:package": "push-dir --dir=dist/package --branch=package --force --verbose --cleanup",
 		"deploy:ghpages": "sh __devops__/deploy/gh-pages.sh",
-		"deploy:package": "sh __devops__/deploy/package.sh"
+		"deploy:package": "sh __devops__/deploy/package.sh",
+		"deploy:surge": "gulp deploy:surge"
 	},
 	"dependencies": {
 		"@carbon/ibmdotcom-services": "^1.37.0",
@@ -26,18 +29,33 @@
 		"carbon-web-components": "^1.21.0",
 		"htm": "^3.1.1",
 		"lit": "^2.3.1",
-		"preact": "^10.10.6"
+		"preact": "^10.11.0"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.19.0",
 		"@parcel/transformer-sass": "2.7.0",
+		"@storybook/addon-actions": "^6.5.10",
+		"@storybook/addon-essentials": "^6.5.10",
+		"@storybook/addon-links": "^6.5.10",
+		"@storybook/builder-webpack4": "^6.5.10",
+		"@storybook/manager-webpack4": "^6.5.10",
+		"@storybook/web-components": "^6.5.10",
+		"babel-loader": "^8.2.5",
 		"buffer": "^6.0.3",
 		"fs-extra": "^10.1.0",
 		"gulp": "^4.0.2",
 		"gulp-cli": "^2.3.0",
+		"gulp-surge": "^0.1.4",
 		"gulp-tap": "^2.0.0",
+		"lit-html": "^2.3.1",
 		"parcel": "^2.7.0",
+		"parcel-reporter-static-files-copy": "^1.4.0",
 		"process": "^0.11.10",
 		"push-dir": "^0.4.1"
+	},
+	"staticFiles": {
+		"staticPath": "./src/demo/static",
+		"staticOutPath": "./demo/static"
 	},
 	"targets": {
 		"web": {
