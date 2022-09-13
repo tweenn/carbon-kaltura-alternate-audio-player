@@ -19,9 +19,17 @@ const App = () => {
 							bx--col-md-4
 							bx--col-lg-8
 							bx--col-xlg-6
-							bx--no-gutter
 						'>
-							<${ComponentCard} />
+							<${ComponentCard} layout='duo' />
+						</div>
+
+						<div class='
+							bx--col-sm-4
+							bx--col-md-4
+							bx--col-lg-8
+							bx--col-xlg-6
+						'>
+						<${ComponentCard} layout='carbon' />
 						</div>
 					</div>
 				</div>

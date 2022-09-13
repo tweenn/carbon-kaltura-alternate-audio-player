@@ -3,7 +3,9 @@ import { html } from '../../vendor/preact';
 
 import '../../../../audio-player';
 
-const Card = () => {
+const Card = ({
+	layout = 'duo'
+}) => {
 	return html`
 		<dds-card>
 			<dds-card-heading style='margin-bottom: 0;'>
@@ -16,20 +18,15 @@ const Card = () => {
 					'
 				>
 					Business can't succeed in societies that are failing.
-					<dds-quote-source-heading>
-						This is the first line of source
-					</dds-quote-source-heading>
 				</dds-quote>
 			</dds-card-heading>
 
-			<p>
-				<audio-player-alternate
-					layout='duo'
-					transcriptUrl='./static/transcript.txt'
-					transcriptFileName='demo-transcript.txt'
-					transcriptIcon='quotes'
-				/>
-			</p>
+			<audio-player-alternate
+				layout='${layout}'
+				transcriptUrl='./static/transcript.txt'
+				transcriptFileName='demo-transcript.txt'
+				transcriptIcon='quotes'
+			/>
 		</dds-card>
 	`;
 }
