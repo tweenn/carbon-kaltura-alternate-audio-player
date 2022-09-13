@@ -64,6 +64,7 @@ export class AudioPlayerAlternateCarbonDownloadButton extends LitElement {
 				download='${this.transcriptFileName}'
 				aria-label='${this.ariaLabel}'
 				icon-layout='condensed'
+				style='margin-left: 16px;'
 			>
 				${this.transcriptText}
 				${unsafeHTML(this.icons[this.transcriptIcon] || this.icons.download)}
