@@ -58,7 +58,7 @@ Duo.args = {
 	useIbmMetrics: false,
 	layout: 'duo',
 	playerAriaLabel: 'Play: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain" - 1:01 min',
-	transcriptUrl: './static/transcript.txt',
+	transcriptUrl: './transcript.txt',
 	transcriptFileName: 'test-transcript.txt',
 	transcriptText: '(TXT, -1KB)',
 	transcriptIcon: 'quote',
