@@ -69,19 +69,5 @@ export class AudioPlayerAlternateCarbonDownloadButton extends LitElement {
 				${unsafeHTML(this.icons[this.transcriptIcon] || this.icons.download)}
 			</bx-btn>
 		`;
-		// : html`
-		// 	<a
-		// 		href='${this.transcriptUrl}'
-		// 		download='${this.transcriptFileName}'
-		// 		aria-label='${this.ariaLabel}'
-		// 	>
-		// 		<span class='icon'>
-		// 			${unsafeHTML(this.icons[this.transcriptIcon] || iconDownload)}
-		// 		</span>
-		// 		<span class='text'>
-		// 			${this.transcriptText}
-		// 		</span>
-		// 	</a>
-		// `;
 	}
 }
