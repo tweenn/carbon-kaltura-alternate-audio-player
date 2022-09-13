@@ -44,7 +44,9 @@ export class AudioPlayerAlternateDuoDownloadButton extends LitElement {
 	};
 
 	render() {
-		return html`
+		return (this.transcriptUrl === '')
+		? ''
+		: html`
 			<a
 				href='${this.transcriptUrl}'
 				download='${this.transcriptFileName}'

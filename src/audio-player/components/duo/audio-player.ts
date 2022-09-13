@@ -42,10 +42,7 @@ export class AudioPlayerAlternateDuoPlayer extends LitElement {
 	}
 
 	handleCssClass () {
-		if (this.isPlayerInitiated === 'false') {
-			return 'is-paused show-play';
-		}
-		if (this.isPlaying === 'false') {
+		if ((this.isPlayerInitiated === 'false') || (this.isPlaying === 'false')) {
 			return 'is-paused show-play';
 		}
 		return 'is-playing show-pause';
