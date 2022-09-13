@@ -1,5 +1,6 @@
 const gulp = require('gulp');
 const gulpTap = require('gulp-tap');
+const gulpSurge = require('gulp-surge');
 
 const fs = require('fs-extra');
 
@@ -8,6 +9,7 @@ const legalsHeader = require('./__devops__/legals')(IBMenv).trim();
 
 const paths = {
 	dist: './dist',
+	demo: './dist/demo'
 };
 
 gulp.task('render:parcel', (done) => {
@@ -89,6 +91,17 @@ gulp.task('render',
 		'render:legals'
 	)
 );
+
+gulp.task('deploy:surge', (done) => {
+	Promise.all([
+		gulpSurge({
+			project: paths.demo, // Path to your static build directory
+			domain: 'ibm-carbon-alternate-kaltura-audio-player.surge.sh' // Your domain or Surge subdomain
+		}),
+	]).then(() => {
+		done();
+	})
+})
 
 gulp.task('default', (done) => {
 	console.log('');
