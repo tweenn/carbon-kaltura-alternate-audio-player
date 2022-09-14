@@ -51,7 +51,7 @@ const Template = ({
 
 export const Duo = Template.bind({});
 Duo.args = {
-	id: 'my-media',
+	id: 'my-media-duo',
 	mediaId: '1_gp572bda',
 	uiConfId: 27941801,
 	partnerId: 1773841,
@@ -67,7 +67,7 @@ Duo.args = {
 
 export const Carbon = Template.bind({});
 Carbon.args = {
-	id: 'my-media',
+	id: 'my-media-carbon',
 	mediaId: '1_gp572bda',
 	uiConfId: 27941801,
 	partnerId: 1773841,
