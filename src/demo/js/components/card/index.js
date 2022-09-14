@@ -25,9 +25,9 @@ const Card = ({
 			<audio-player-alternate
 				layout='${layout}'
 				id='${id}'
-				transcriptUrl='./static/transcript.txt'
-				transcriptFileName='demo-transcript.txt'
-				transcriptIcon='quotes'
+				buttonDownloadHref='./static/transcript.txt'
+				buttonDownloadFileName='demo-transcript.txt'
+				buttonDownloadIcon='quotes'
 			/>
 		</dds-card>
 	`;

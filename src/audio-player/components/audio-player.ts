@@ -42,22 +42,22 @@ export class AudioPlayerAlternate extends LitElement {
 	id = 'my-media';
 
 	@property()
-	playerAriaLabel = 'Play: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain" - 1:01 min';
+	buttonPlayAriaLabel = 'Play: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain" - 1:01 min';
 
 	@property()
-	transcriptUrl = '';
+	buttonDownloadHref = '';
 
 	@property()
-	transcriptFileName = 'no.name';
+	buttonDownloadFileName = 'no.name';
 
 	@property()
-	transcriptText = '(TXT, 112KB)';
+	buttonDownloadText = '(TXT, 112KB)';
 
 	@property()
-	transcriptIcon = 'quote'; // 'quotes', 'download', 'file'
+	buttonDownloadIcon = 'quote'; // 'quotes', 'download', 'file'
 
 	@property()
-	transcriptAriaLabel = 'Download Transcript for: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain"';
+	buttonDownloadAriaLabel = 'Download Transcript for: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain"';
 
 	@state()
 	private isPlayerInitiated = false;
@@ -177,14 +177,14 @@ export class AudioPlayerAlternate extends LitElement {
 								isPlayerInitiated='${this.isPlayerInitiated}'
 								isPlaying='${this.isPlaying}'
 								mediaCurrentTime='${this.mediaCurrentTime}'
-								ariaLabel='${this.playerAriaLabel}'
+								ariaLabel='${this.buttonPlayAriaLabel}'
 							></audio-player-alternate-player-duo>
 							<audio-player-alternate-download-button-duo
-								transcriptUrl='${this.transcriptUrl}'
-								transcriptFileName='${this.transcriptFileName}'
-								transcriptText='${this.transcriptText}'
-								transcriptIcon='${this.transcriptIcon}'
-								ariaLabel='${this.transcriptAriaLabel}'
+								buttonDownloadHref='${this.buttonDownloadHref}'
+								buttonDownloadFileName='${this.buttonDownloadFileName}'
+								buttonDownloadText='${this.buttonDownloadText}'
+								buttonDownloadIcon='${this.buttonDownloadIcon}'
+								ariaLabel='${this.buttonDownloadAriaLabel}'
 							></audio-player-alternate-download-button-duo>
 						`
 						: ''
@@ -199,15 +199,15 @@ export class AudioPlayerAlternate extends LitElement {
 								isPlayerInitiated='${this.isPlayerInitiated}'
 								isPlaying='${this.isPlaying}'
 								mediaCurrentTime='${this.mediaCurrentTime}'
-								ariaLabel='${this.playerAriaLabel}'
+								ariaLabel='${this.buttonPlayAriaLabel}'
 							>
 							</audio-player-alternate-player-carbon>
 							<audio-player-alternate-download-button-carbon
-								transcriptUrl='${this.transcriptUrl}'
-								transcriptFileName='${this.transcriptFileName}'
-								transcriptText='${this.transcriptText}'
-								transcriptIcon='${this.transcriptIcon}'
-								ariaLabel='${this.transcriptAriaLabel}'
+								buttonDownloadHref='${this.buttonDownloadHref}'
+								buttonDownloadFileName='${this.buttonDownloadFileName}'
+								buttonDownloadText='${this.buttonDownloadText}'
+								buttonDownloadIcon='${this.buttonDownloadIcon}'
+								ariaLabel='${this.buttonDownloadAriaLabel}'
 							>
 							</audio-player-alternate-download-button-carbon>
 						`

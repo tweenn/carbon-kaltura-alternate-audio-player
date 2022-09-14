@@ -9,7 +9,7 @@ export default {
 			control: { type: 'select' },
 			options: ['carbon', 'duo'],
 		},
-		transcriptIcon: {
+		buttonDownloadIcon: {
 			control: { type: 'select' },
 			options: ['quotes', 'download', 'file'],
 		}
@@ -24,12 +24,12 @@ const Template = ({
 	mediaId = '1_gp572bda',
 	useIbmMetrics = false,
 	layout = 'carbon',
-	playerAriaLabel = 'Play: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain" - 1:01 min',
-	transcriptUrl = '',
-	transcriptFileName = 'test-transcript.txt',
-	transcriptText = '(TXT, -1KB)',
-	transcriptIcon = 'quote',
-	transcriptAriaLabel = 'Download Transcript for: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain"'
+	buttonPlayAriaLabel = 'Play: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain" - 1:01 min',
+	buttonDownloadHref = '',
+	buttonDownloadFileName = 'test-transcript.txt',
+	buttonDownloadText = '(TXT, -1KB)',
+	buttonDownloadIcon = 'quote',
+	buttonDownloadAriaLabel = 'Download Transcript for: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain"'
 }) => {
 	return html`
 		<audio-player-alternate
@@ -39,12 +39,12 @@ const Template = ({
 			partnerId='${partnerId}'
 			useIbmMetrics='${useIbmMetrics}'
 			layout='${layout}'
-			playerAriaLabel='${playerAriaLabel}'
-			transcriptUrl='${transcriptUrl}'
-			transcriptFileName='${transcriptFileName}'
-			transcriptText='${transcriptText}'
-			transcriptIcon='${transcriptIcon}'
-			transcriptAriaLabel='${transcriptAriaLabel}'
+			buttonPlayAriaLabel='${buttonPlayAriaLabel}'
+			buttonDownloadHref='${buttonDownloadHref}'
+			buttonDownloadFileName='${buttonDownloadFileName}'
+			buttonDownloadText='${buttonDownloadText}'
+			buttonDownloadIcon='${buttonDownloadIcon}'
+			buttonDownloadAriaLabel='${buttonDownloadAriaLabel}'
 		/>
 	`;
 }
@@ -57,12 +57,12 @@ Duo.args = {
 	partnerId: 1773841,
 	useIbmMetrics: false,
 	layout: 'duo',
-	playerAriaLabel: 'Play: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain" - 1:01 min',
-	transcriptUrl: './transcript.txt',
-	transcriptFileName: 'test-transcript.txt',
-	transcriptText: '(TXT, -1KB)',
-	transcriptIcon: 'quote',
-	transcriptAriaLabel: 'Download Transcript for: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain"'
+	buttonPlayAriaLabel: 'Play: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain" - 1:01 min',
+	buttonDownloadHref: './transcript.txt',
+	buttonDownloadFileName: 'test-transcript.txt',
+	buttonDownloadText: '(TXT, -1KB)',
+	buttonDownloadIcon: 'quote',
+	buttonDownloadAriaLabel: 'Download Transcript for: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain"'
 };
 
 export const Carbon = Template.bind({});
@@ -73,11 +73,11 @@ Carbon.args = {
 	partnerId: 1773841,
 	useIbmMetrics: false,
 	layout: 'carbon',
-	playerAriaLabel: 'Play: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain" - 1:01 min',
-	transcriptUrl: './transcript.txt',
-	transcriptFileName: 'test-transcript.txt',
-	transcriptText: '(TXT, -1KB)',
-	transcriptIcon: 'quote',
-	transcriptAriaLabel: 'Download Transcript for: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain"'
+	buttonPlayAriaLabel: 'Play: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain" - 1:01 min',
+	buttonDownloadHref: './transcript.txt',
+	buttonDownloadFileName: 'test-transcript.txt',
+	buttonDownloadText: '(TXT, -1KB)',
+	buttonDownloadIcon: 'quote',
+	buttonDownloadAriaLabel: 'Download Transcript for: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain"'
 };
 

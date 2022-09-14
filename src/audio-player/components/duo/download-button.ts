@@ -24,16 +24,16 @@ export class AudioPlayerAlternateDuoDownloadButton extends LitElement {
 	ariaLabel = 'missing aria label';
 
 	@property()
-	transcriptUrl = '';
+	buttonDownloadHref = '';
 
 	@property()
-	transcriptFileName = 'no.name';
+	buttonDownloadFileName = 'no.name';
 
 	@property()
-	transcriptText = '';
+	buttonDownloadText = '';
 
 	@property()
-	transcriptIcon = 'download'; // 'quotes', 'download', 'file'
+	buttonDownloadIcon = 'download'; // 'quotes', 'download', 'file'
 
 	static styles = downloadButtonStyle;
 
@@ -44,19 +44,19 @@ export class AudioPlayerAlternateDuoDownloadButton extends LitElement {
 	};
 
 	render() {
-		return (this.transcriptUrl === '')
+		return (this.buttonDownloadHref === '')
 		? ''
 		: html`
 			<a
-				href='${this.transcriptUrl}'
-				download='${this.transcriptFileName}'
+				href='${this.buttonDownloadHref}'
+				download='${this.buttonDownloadFileName}'
 				aria-label='${this.ariaLabel}'
 			>
 				<span class='icon'>
-					${unsafeHTML(this.icons[this.transcriptIcon] || iconDownload)}
+					${unsafeHTML(this.icons[this.buttonDownloadIcon] || iconDownload)}
 				</span>
 				<span class='text'>
-					${this.transcriptText}
+					${this.buttonDownloadText}
 				</span>
 			</a>
 		`;

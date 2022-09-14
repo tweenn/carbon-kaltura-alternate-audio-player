@@ -22,16 +22,16 @@ export class AudioPlayerAlternateCarbonDownloadButton extends LitElement {
 	ariaLabel = 'missing aria label';
 
 	@property()
-	transcriptUrl = '';
+	buttonDownloadHref = '';
 
 	@property()
-	transcriptFileName = 'no.name';
+	buttonDownloadFileName = 'no.name';
 
 	@property()
-	transcriptText = '';
+	buttonDownloadText = '';
 
 	@property()
-	transcriptIcon = 'download'; // 'quotes', 'download', 'file'
+	buttonDownloadIcon = 'download'; // 'quotes', 'download', 'file'
 
 	private icons : object = {};
 
@@ -55,19 +55,19 @@ export class AudioPlayerAlternateCarbonDownloadButton extends LitElement {
 	}
 
 	render() {
-		return (this.transcriptUrl === '')
+		return (this.buttonDownloadHref === '')
 		? ''
 		: html`
 			<bx-btn
 				kind='tertiary'
-				href='${this.transcriptUrl}'
-				download='${this.transcriptFileName}'
+				href='${this.buttonDownloadHref}'
+				download='${this.buttonDownloadFileName}'
 				aria-label='${this.ariaLabel}'
 				icon-layout='condensed'
 				style='margin-left: 16px;'
 			>
-				${this.transcriptText}
-				${unsafeHTML(this.icons[this.transcriptIcon] || this.icons.download)}
+				${this.buttonDownloadText}
+				${unsafeHTML(this.icons[this.buttonDownloadIcon] || this.icons.download)}
 			</bx-btn>
 		`;
 	}
