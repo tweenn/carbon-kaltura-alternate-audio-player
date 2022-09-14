@@ -10,13 +10,16 @@ module.exports = (environment = 'production') => {
 
 	return `
 /**
- * @license
- * Name: Carbon Kaltura Alternate Audio Player
+ * @license MIT
+ * @description
+ * Carbon Kaltura Alternate Audio Player:
+ * This is a community component, provided as is
  * Environment: ${environment}
- * Release: ${version}
  * Built: ${date}
- * Owner: Felipe Zuntini
- * Description: Experimental file, use with caution as is
+ * @version ${version}
+ * @author Felipe Zuntini <felipezuntini@hotmail.com>
+ * @example https://tweenn.github.io/carbon-kaltura-alternate-audio-player/
+ * @url https://github.com/tweenn/carbon-kaltura-alternate-audio-player
  */
 	`;
 };
