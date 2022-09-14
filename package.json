@@ -55,7 +55,7 @@
 	},
 	"staticFiles": {
 		"staticPath": "./src/demo/static",
-		"staticOutPath": "./demo/static"
+		"staticOutPath": "./static"
 	},
 	"targets": {
 		"web": {
