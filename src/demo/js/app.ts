@@ -20,7 +20,7 @@ const App = () => {
 							bx--col-lg-8
 							bx--col-xlg-6
 						'>
-							<${ComponentCard} layout='duo' />
+							<${ComponentCard} layout='duo' id='player-duo' />
 						</div>
 
 						<div class='
@@ -29,7 +29,7 @@ const App = () => {
 							bx--col-lg-8
 							bx--col-xlg-6
 						'>
-						<${ComponentCard} layout='carbon' />
+							<${ComponentCard} layout='carbon' id='player-carbon' />
 						</div>
 					</div>
 				</div>

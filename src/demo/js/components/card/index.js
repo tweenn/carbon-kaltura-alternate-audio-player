@@ -4,7 +4,8 @@ import { html } from '../../vendor/preact';
 import '../../../../audio-player';
 
 const Card = ({
-	layout = 'duo'
+	layout = 'duo',
+	id = ''
 }) => {
 	return html`
 		<dds-card>
@@ -23,6 +24,7 @@ const Card = ({
 
 			<audio-player-alternate
 				layout='${layout}'
+				id='${id}'
 				transcriptUrl='./static/transcript.txt'
 				transcriptFileName='demo-transcript.txt'
 				transcriptIcon='quotes'
