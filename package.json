@@ -9,9 +9,8 @@
 	"private": false,
 	"scripts": {
 		"build": "gulp render",
-		"build:demo": "parcel build --no-cache --no-source-maps --public-url /",
-		"build:package": "parcel build --no-cache --no-source-maps --public-url /",
-		"build:storybook": "gulp clean && build-storybook --output-dir ./dist/storybook",
+		"build:parcel": "parcel build --no-cache --no-source-maps --public-url /",
+		"build:storybook": "build-storybook --output-dir ./dist/storybook",
 		"serve:demo": "gulp clean && parcel serve --port 3456 --no-source-maps --public-url /",
 		"serve:storybook": "start-storybook -p 6006",
 		"push:ghpages": "push-dir --dir=dist/storybook --branch=gh-pages --force --verbose --cleanup",

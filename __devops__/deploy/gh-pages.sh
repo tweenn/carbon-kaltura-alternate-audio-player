@@ -1,5 +1,5 @@
 #!/bin/bash
 
 rm -rf ./dist;
-yarn build:storybook;
+yarn build;
 yarn push:ghpages;

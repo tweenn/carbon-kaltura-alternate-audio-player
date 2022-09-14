@@ -1,5 +1,5 @@
 #!/bin/bash
 
 rm -rf ./dist;
-yarn build:demo;
+yarn build;
 yarn push:demo;

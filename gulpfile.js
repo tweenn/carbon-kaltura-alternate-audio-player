@@ -16,7 +16,15 @@ const paths = {
 gulp.task('render:parcel', (done) => {
 	const { execSync } = require('child_process');
 
-	execSync('yarn build:package > /dev/null');
+	execSync('yarn build:parcel > /dev/null');
+
+	done();
+});
+
+gulp.task('render:storybook', (done) => {
+	const { execSync } = require('child_process');
+
+	execSync('yarn build:storybook > /dev/null');
 
 	done();
 });
@@ -76,6 +84,7 @@ gulp.task('render:legals', () => {
 });
 
 gulp.task('clean:package', (done) => {
+	console.log(`${paths.package}/demo`);
 	fs.rmSync(`${paths.package}/demo`, {
 		recursive: true,
 		force: true
@@ -103,6 +112,7 @@ gulp.task('render',
 	gulp.series(
 		'clean',
 		'render:parcel',
+		'render:storybook',
 		'render:legals',
 		'clean:package'
 	)
