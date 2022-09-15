@@ -84,7 +84,7 @@ gulp.task('render:legals', () => {
 });
 
 gulp.task('clean:package', (done) => {
-	fs.rmSync(`${paths.package}/demo`, {
+	fs.rmSync(`${paths.package}/static`, {
 		recursive: true,
 		force: true
 	});
