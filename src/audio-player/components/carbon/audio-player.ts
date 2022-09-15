@@ -50,9 +50,6 @@ export class AudioPlayerAlternateDuoPlayer extends LitElement {
 			script.async = true;
 			script.id = 'alternate-audio-player-script-for-carbon-button';
 			script.type = 'module';
-			script.onload = () => {
-				console.log('scrript loaded');
-			}
 			document.body.appendChild(script);
 		}
 	}
