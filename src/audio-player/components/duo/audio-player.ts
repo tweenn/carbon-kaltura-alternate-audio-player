@@ -9,12 +9,19 @@ import {
 	state
 } from 'lit/decorators.js';
 
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+
 import audioPlayerStyle from './audio-player-style';
 
 import { KalturaPlayer as KalturaPlayerAPI } from '@carbon/ibmdotcom-services';
 
-import './duo/audio-player';
-import './duo/download-button';
+import {
+	download as iconDownload,
+	quotes as iconQuotes,
+	documentDownload as iconDocumentDownload,
+	playFilled as iconPlayFilledHtml,
+	pauseFilled as iconPauseFilledHtml
+} from './audio-player-icons';
 
 import plex from 'https://1.www.s81c.com/common/carbon-for-ibm-dotcom/tag/v1/latest/plex.css';
 
@@ -69,6 +76,12 @@ export class AudioPlayerAlternateDuo extends LitElement {
 	};
 
 	static styles = audioPlayerStyle;
+
+	private icons = {
+		download: iconDownload,
+		quotes: iconQuotes,
+		file: iconDocumentDownload
+	};
 
 	constructor() {
 		super();
@@ -148,26 +161,49 @@ export class AudioPlayerAlternateDuo extends LitElement {
 		}
 	}
 
+	handleCssClass () {
+		if ((this.isPlayerInitiated) && (this.isPlaying)) {
+			return 'is-playing show-pause';
+		}
+		return 'is-paused show-play';
+	}
+
 	render() {
 		return html`
-			<div class='audio-player ${this.isPlaying ? 'is-playing' : 'is-paused'}'>
+			<div class='audio-player'>
 				<div class='audio-player--holder'>
-					<audio-player-alternate-player-duo
-						@click-play='${() => {
-							this.handlePlay();
-						}}'
-						isPlayerInitiated='${this.isPlayerInitiated}'
-						isPlaying='${this.isPlaying}'
-						mediaCurrentTime='${this.mediaCurrentTime}'
-						ariaLabel='${this.buttonPlayAriaLabel}'
-					></audio-player-alternate-player-duo>
-					<audio-player-alternate-download-button-duo
-						buttonDownloadHref='${this.buttonDownloadHref}'
-						buttonDownloadFileName='${this.buttonDownloadFileName}'
-						buttonDownloadText='${this.buttonDownloadText}'
-						buttonDownloadIcon='${this.buttonDownloadIcon}'
-						ariaLabel='${this.buttonDownloadAriaLabel}'
-					></audio-player-alternate-download-button-duo>
+					<button
+						@click='${this.handlePlay}'
+						class='btn-play-pause ${this.handleCssClass()}'
+						aria-label='${this.buttonPlayAriaLabel}'
+					>
+						<span class='icon'>
+							${unsafeHTML(iconPauseFilledHtml)}
+							${unsafeHTML(iconPlayFilledHtml)}
+						</span>
+						<span class='text'>
+							${KalturaPlayerAPI.getMediaDuration(this.mediaCurrentTime)}
+						</span>
+					</button>
+					${
+						(this.buttonDownloadHref === '')
+						? ''
+						: html`
+							<a
+								class='btn-download'
+								href='${this.buttonDownloadHref}'
+								download='${this.buttonDownloadFileName}'
+								aria-label='${this.buttonDownloadAriaLabel}'
+							>
+								<span class='icon'>
+									${unsafeHTML(this.icons[this.buttonDownloadIcon] || iconDownload)}
+								</span>
+								<span class='text'>
+									${this.buttonDownloadText}
+								</span>
+							</a>
+						`
+					}
 				</div>
 			</div>
 			<slot />
