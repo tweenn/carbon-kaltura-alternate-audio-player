@@ -1,2 +1,3 @@
 
-import './components';
+import './components/multi-select';
+import './components/duo';

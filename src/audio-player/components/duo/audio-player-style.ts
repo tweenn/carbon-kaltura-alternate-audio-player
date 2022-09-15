@@ -2,20 +2,16 @@ import {
 	css
 } from 'lit';
 
-import commonStyles from './common-styles';
-
 export default css`
-	${commonStyles}
+	.audio-player {
+		display: inline-flex;
+		height: 48px;
+		box-sizing: border-box;
 
-	button.is-playing {
-		color: #0f62fe;
+		font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
 	}
 
-	button.show-pause .ibm-icon.play {
-		display: none;
-	}
-
-	button.show-play .ibm-icon.pause {
+	::slotted(*) {
 		display: none;
 	}
 `;
