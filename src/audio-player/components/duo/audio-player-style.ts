@@ -38,6 +38,7 @@ export default css`
 	button:focus,
 	button:focus-visible {
 		background-color: #e5e5e5;
+		color: #262626;
 	}
 
 	a {
@@ -66,7 +67,7 @@ export default css`
 	}
 
 	.btn-play-pause.is-playing {
-		color: #0f62fe;
+		color: #0043ce;
 	}
 
 	.btn-play-pause.show-pause .ibm-icon.play {
