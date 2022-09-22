@@ -45,7 +45,7 @@ export default css`
 		text-decoration: none;
 	}
 
-	a:visited: {
+	a:visited {
 		text-decoration: none;
 	}
 

@@ -23,7 +23,7 @@ const Template = ({
 }) => {
 	return html`
 		<audio-player-alternate-duo
-			id='${id}'
+			id='my-media-duo'
 			buttonPlayAriaLabel='${buttonPlayAriaLabel}'
 			buttonDownloadHref='${buttonDownloadHref}'
 			buttonDownloadFileName='${buttonDownloadFileName}'
@@ -36,7 +36,6 @@ const Template = ({
 
 export const Player = Template.bind({});
 Player.args = {
-	id: 'my-media-duo',
 	mediaId: '1_gp572bda',
 	buttonPlayAriaLabel: 'Play: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain" - 1:01 min',
 	buttonDownloadHref: './transcript.txt',

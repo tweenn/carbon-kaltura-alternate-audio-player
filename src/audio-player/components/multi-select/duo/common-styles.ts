@@ -26,13 +26,14 @@ export default css`
 	button:focus,
 	button:focus-visible {
 		background-color: #e5e5e5;
+		color: #262626;
 	}
 
 	a {
 		text-decoration: none;
 	}
 
-	a:visited: {
+	a:visited {
 		text-decoration: none;
 	}
 

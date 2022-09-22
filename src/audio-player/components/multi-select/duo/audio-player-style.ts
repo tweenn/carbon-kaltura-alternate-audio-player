@@ -8,7 +8,7 @@ export default css`
 	${commonStyles}
 
 	button.is-playing {
-		color: #0f62fe;
+		color: #0043ce;
 	}
 
 	button.show-pause .ibm-icon.play {
