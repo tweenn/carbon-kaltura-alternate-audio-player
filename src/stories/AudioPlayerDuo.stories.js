@@ -14,7 +14,6 @@ export default {
 
 const Template = ({
 	id = 'my-media',
-	layout = 'carbon',
 	buttonPlayAriaLabel = 'Play: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain" - 1:01 min',
 	buttonDownloadHref = '',
 	buttonDownloadFileName = 'test-transcript.txt',
@@ -25,7 +24,6 @@ const Template = ({
 	return html`
 		<audio-player-alternate-duo
 			id='${id}'
-			layout='${layout}'
 			buttonPlayAriaLabel='${buttonPlayAriaLabel}'
 			buttonDownloadHref='${buttonDownloadHref}'
 			buttonDownloadFileName='${buttonDownloadFileName}'

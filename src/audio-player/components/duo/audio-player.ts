@@ -31,9 +31,6 @@ export class AudioPlayerAlternateDuo extends LitElement {
 	mediaId = '1_gp572bda';
 
 	@property()
-	id = 'my-media';
-
-	@property()
 	buttonPlayAriaLabel = 'Play: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain" - 1:01 min';
 
 	@property()
@@ -68,7 +65,7 @@ export class AudioPlayerAlternateDuo extends LitElement {
 	@state()
 	private mediaCurrentTime = 0;
 
-	private holderId = 'my-media';
+	private holderId = 'default-player-id';
 	private playerId = '--media-player';
 
 	private mediaInformation = {
