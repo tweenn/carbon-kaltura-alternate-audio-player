@@ -1,6 +1,7 @@
 import {
 	LitElement,
-	html
+	html,
+	nothing
 } from 'lit';
 
 import {
@@ -23,12 +24,20 @@ import {
 	pauseFilled as iconPauseFilledHtml
 } from './audio-player-icons';
 
-import plex from 'https://1.www.s81c.com/common/carbon-for-ibm-dotcom/tag/v1/latest/plex.css';
-
 @customElement('audio-player-alternate-duo')
 export class AudioPlayerAlternateDuo extends LitElement {
 	@property()
 	mediaId = '1_gp572bda';
+
+	// Not yet supported
+	// @property()
+	// uiConfId = 27941801;
+	// Not yet supported
+	// @property()
+	// partnerId = 1773841;
+
+	@property()
+	useIbmMetrics = true;
 
 	@property()
 	buttonPlayAriaLabel = 'Play: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain" - 1:01 min';
@@ -74,12 +83,6 @@ export class AudioPlayerAlternateDuo extends LitElement {
 
 	static styles = audioPlayerStyle;
 
-	private icons = {
-		download: iconDownload,
-		quotes: iconQuotes,
-		file: iconDocumentDownload
-	};
-
 	constructor() {
 		super();
 
@@ -108,6 +111,24 @@ export class AudioPlayerAlternateDuo extends LitElement {
 		this.appendChild(elementMediaPlayer);
 	}
 
+	getIcon(iconName: string) {
+		let icon;
+	
+		switch (iconName) {
+			case 'quotes':
+				icon = iconQuotes;
+				break;
+			case 'file':
+				icon = iconDocumentDownload;
+				break;
+			case 'download':
+			default:
+				icon = iconDownload;
+				break;
+		}
+		return icon;
+	}
+
 	async embbedPlayer () {
 		const context = this;
 
@@ -120,7 +141,7 @@ export class AudioPlayerAlternateDuo extends LitElement {
 			{
 				autoPlay: true
 			},
-			true,
+			this.useIbmMetrics,
 			(kdp: any) => {
 				context.isPlayerReady = true;
 
@@ -167,11 +188,11 @@ export class AudioPlayerAlternateDuo extends LitElement {
 
 	render() {
 		return html`
-			<div class='audio-player'>
+			<div class='audio-player-allternate--small'>
 				<div class='audio-player--holder'>
 					<button
 						@click='${this.handlePlay}'
-						class='btn-play-pause ${this.handleCssClass()}'
+						class='action-button play-pause ${this.handleCssClass()}'
 						aria-label='${this.buttonPlayAriaLabel}'
 					>
 						<span class='icon'>
@@ -184,16 +205,16 @@ export class AudioPlayerAlternateDuo extends LitElement {
 					</button>
 					${
 						(this.buttonDownloadHref === '')
-						? ''
+						? nothing
 						: html`
 							<a
-								class='btn-download'
+								class='action-button download'
 								href='${this.buttonDownloadHref}'
 								download='${this.buttonDownloadFileName}'
 								aria-label='${this.buttonDownloadAriaLabel}'
 							>
 								<span class='icon'>
-									${unsafeHTML(this.icons[this.buttonDownloadIcon] || iconDownload)}
+									${unsafeHTML(this.getIcon(this.buttonDownloadIcon))}
 								</span>
 								<span class='text'>
 									${this.buttonDownloadText}
