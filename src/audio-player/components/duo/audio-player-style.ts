@@ -51,7 +51,7 @@ export default css`
 	.action-button:focus {
 		box-shadow:
 			inset 0 0 0 2px var(--cds-focus, ${unsafeCSS(blue60)}),
-			inset 0 0 0 3px var(--cds-ui-background, ${unsafeCSS(white)})
+			inset 0 0 0 3px var(--cds-ui-background, ${unsafeCSS(white)});
 	}
 
 	a.action-button:visited {
@@ -75,11 +75,8 @@ export default css`
 		color: ${unsafeCSS(blue70)};
 	}
 
-	.action-button.play-pause.show-pause .ibm-icon.play {
-		display: none;
-	}
-
-	.action-button.play-pause.show-play .ibm-icon.pause {
+	.action-button.play-pause.show-pause .ibm-icon.ibm-icon__play,
+	.action-button.play-pause.show-play .ibm-icon.ibm-icon__pause {
 		display: none;
 	}
 

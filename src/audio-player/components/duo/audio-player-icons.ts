@@ -14,7 +14,7 @@ const makeIcon = (icon = { attrs: {}}, className = '') => {
 			focusable: false,
 			'aria-hidden': true,
 			preserveAspectRatio: 'xMidYMid meet',
-			class: `ibm-icon ${className}`,
+			class: `ibm-icon ibm-icon__${className}`,
 		},
 	}).outerHTML;
 }
