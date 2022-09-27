@@ -3,7 +3,7 @@ import '../audio-player';
 
 // More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
-	title: 'Player/Audio/Multi',
+	title: 'Player/Small/Multi',
 	argTypes: {
 		layout: {
 			control: { type: 'select' },
