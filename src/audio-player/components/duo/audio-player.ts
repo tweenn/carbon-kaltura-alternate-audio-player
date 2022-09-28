@@ -83,12 +83,6 @@ export class AudioPlayerAlternateDuo extends LitElement {
 
 	static styles = audioPlayerStyle;
 
-	constructor() {
-		super();
-
-		this.getMediaInformation();
-	}
-
 	async getMediaInformation () {
 		this.mediaInformation = await KalturaPlayerAPI.api(this.mediaId);
 		this.mediaCurrentTime = this.mediaInformation.duration;
@@ -184,6 +178,10 @@ export class AudioPlayerAlternateDuo extends LitElement {
 			return 'is-playing show-pause';
 		}
 		return 'is-paused show-play';
+	}
+
+	firstUpdated() {
+		this.getMediaInformation();
 	}
 
 	render() {
