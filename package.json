@@ -1,6 +1,6 @@
 {
 	"name": "carbon-kaltura-alternate-audio-player",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "An IBM Carbon Alternate Audio Player based on Kaltura",
 	"main": "src/index.ts",
 	"repository": "git@github.com:tweenn/carbon-kaltura-alternate-audio-player.git",
@@ -71,7 +71,7 @@
 		"component": {
 			"optimize": true,
 			"source": [
-				"src/audio-player/index.ts"
+				"src/audio-player/components/duo/index.ts"
 			],
 			"distDir": "./dist/package/",
 			"context": "browser"

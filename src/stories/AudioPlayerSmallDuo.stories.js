@@ -1,7 +1,6 @@
 import { html } from 'lit-html';
 import '../audio-player';
 
-// More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
 export default {
 	title: 'Player/Small',
 	argTypes: {

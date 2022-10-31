@@ -5,7 +5,7 @@ import {
 import { black100, blue60, blue70, gray90, gray10Hover, white } from '@carbon/colors';
 
 export default css`
-	.audio-player-allternate--small {
+	.alternate-audio-player {
 		display: inline-flex;
 		height: 3rem;
 		box-sizing: border-box;
@@ -17,7 +17,7 @@ export default css`
 		display: none;
 	}
 
-	.action-button {
+	.alternate-audio-player--action-button {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
@@ -43,44 +43,44 @@ export default css`
 			outline 70ms cubic-bezier(0, 0, 0.38, 0.9) 0s;
 	}
 
-	.action-button:hover {
+	.alternate-audio-player--action-button:hover {
 		background-color: ${unsafeCSS(gray10Hover)};
 		color: ${unsafeCSS(gray90)};
 	}
 
-	.action-button:focus {
+	.alternate-audio-player--action-button:focus {
 		box-shadow:
 			inset 0 0 0 2px var(--cds-focus, ${unsafeCSS(blue60)}),
 			inset 0 0 0 3px var(--cds-ui-background, ${unsafeCSS(white)});
 	}
 
-	a.action-button:visited {
+	a.alternate-audio-player--action-button:visited {
 		text-decoration: none;
 	}
 
-	.action-button .icon {
+	.alternate-audio-player--action-button .alternate-audio-player--action-button__icon {
 		box-sizing: border-box;
 		width: auto;
 		height: 3rem;
 		color: inherit;
 	}
 
-	.action-button .icon svg {
+	.alternate-audio-player--action-button .alternate-audio-player--action-button__icon svg {
 		padding: 0.875rem 0;
 		width: 1.25rem;
 		height: 1.25rem;
 	}
 
-	.action-button.play-pause.is-playing {
+	.alternate-audio-player--action-button.alternate-audio-player--action-button__play-pause.is-playing {
 		color: ${unsafeCSS(blue70)};
 	}
 
-	.action-button.play-pause.show-pause .ibm-icon.ibm-icon__play,
-	.action-button.play-pause.show-play .ibm-icon.ibm-icon__pause {
+	.alternate-audio-player--action-button.alternate-audio-player--action-button__play-pause.show-pause .ibm-icon.ibm-icon__play,
+	.alternate-audio-player--action-button.alternate-audio-player--action-button__play-pause.show-play .ibm-icon.ibm-icon__pause {
 		display: none;
 	}
 
-	.action-button.download {
+	.alternate-audio-player--action-button.alternate-audio-player--action-button__download {
 		margin-left: 1rem;
 	}
 `;

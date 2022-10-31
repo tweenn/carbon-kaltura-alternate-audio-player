@@ -1,22 +1,22 @@
 import { html } from 'lit-html';
 import '../audio-player';
 
-// More on default export: https://storybook.js.org/docs/web-components/writing-stories/introduction#default-export
-export default {
-	title: 'Player/Small/Multi',
-	argTypes: {
-		layout: {
-			control: { type: 'select' },
-			options: ['carbon', 'duo'],
-		},
-		buttonDownloadIcon: {
-			control: { type: 'select' },
-			options: ['quotes', 'download', 'file'],
-		}
-	},
-};
+// TEMPORARILY DEPRECATED
+export default {};
+// export default {
+// 	title: 'Player/Small/Multi',
+// 	argTypes: {
+// 		layout: {
+// 			control: { type: 'select' },
+// 			options: ['carbon', 'duo'],
+// 		},
+// 		buttonDownloadIcon: {
+// 			control: { type: 'select' },
+// 			options: ['quotes', 'download', 'file'],
+// 		}
+// 	},
+// };
 
-// More on component templates: https://storybook.js.org/docs/web-components/writing-stories/introduction#using-args
 const Template = ({
 	id = 'my-media',
 	uiConfId = 27941801,

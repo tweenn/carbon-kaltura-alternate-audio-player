@@ -23,6 +23,7 @@ const App = () => {
 							<${ComponentCard} layout='duo' id='player-duo' />
 						</div>
 
+						<!--
 						<div class='
 							bx--col-sm-4
 							bx--col-md-4
@@ -31,6 +32,7 @@ const App = () => {
 						'>
 							<${ComponentCard} layout='carbon' id='player-carbon' />
 						</div>
+						-->
 					</div>
 				</div>
 			</main>

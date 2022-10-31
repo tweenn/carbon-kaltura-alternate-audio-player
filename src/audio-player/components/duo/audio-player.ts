@@ -58,9 +58,6 @@ export class AudioPlayerAlternateDuo extends LitElement {
 	buttonDownloadAriaLabel = 'Download Transcript for: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain"';
 
 	@state()
-	private isPlayerInitiated = false;
-
-	@state()
 	private isPlayerReady = false;
 
 	@state()
@@ -88,7 +85,7 @@ export class AudioPlayerAlternateDuo extends LitElement {
 		this.mediaCurrentTime = this.mediaInformation.duration;
 	}
 
-	standarizePlayer () {
+	standardizePlayer () {
 		if (this.getAttribute('id') === null) {
 			this.setAttribute('id', this.holderId);
 		}
@@ -126,14 +123,11 @@ export class AudioPlayerAlternateDuo extends LitElement {
 	async embbedPlayer () {
 		const context = this;
 
-		this.standarizePlayer();
-		this.createChildPlayerElement();
-
   		const embedAnswer = await KalturaPlayerAPI.embedMedia(
 			this.mediaId,
 			this.playerId,
 			{
-				autoPlay: true
+				autoPlay: false
 			},
 			this.useIbmMetrics,
 			(kdp: any) => {
@@ -152,17 +146,10 @@ export class AudioPlayerAlternateDuo extends LitElement {
 
 		this.kalturaDigitalPlayer = await embedAnswer.kWidget();
 
-		document.getElementById(this.playerId)?.click();
-
-		this.isPlaying = true;
 	}
 
-	handlePlay () {
-		if (!this.isPlayerInitiated) {
-			this.isPlayerInitiated = true;
-			this.embbedPlayer();
-
-		} else if (this.isPlayerReady) {
+	handlePlay() {
+		if (this.isPlayerReady) {
 			if (this.isPlaying) {
 				this.kalturaDigitalPlayer.sendNotification('doPause');
 				this.isPlaying = false;
@@ -173,31 +160,37 @@ export class AudioPlayerAlternateDuo extends LitElement {
 		}
 	}
 
-	handleCssClass () {
-		if ((this.isPlayerInitiated) && (this.isPlaying)) {
-			return 'is-playing show-pause';
-		}
-		return 'is-paused show-play';
+	handleCssClass() {
+		return this.isPlaying ?
+			'is-playing show-pause'
+			: 'is-paused show-play';
+	}
+
+	async initiatePlayer() {
+		await this.getMediaInformation();
+		this.standardizePlayer();
+		this.createChildPlayerElement();
+		await this.embbedPlayer();
 	}
 
 	firstUpdated() {
-		this.getMediaInformation();
+		this.initiatePlayer();
 	}
 
 	render() {
 		return html`
-			<div class='audio-player-allternate--small'>
-				<div class='audio-player--holder'>
+			<div class='alternate-audio-player'>
+				<div class='alternate-audio-player--holder'>
 					<button
 						@click='${this.handlePlay}'
-						class='action-button play-pause ${this.handleCssClass()}'
+						class='alternate-audio-player--action-button alternate-audio-player--action-button__play-pause ${this.handleCssClass()}'
 						aria-label='${this.buttonPlayAriaLabel}'
 					>
-						<span class='icon'>
+						<span class='alternate-audio-player--action-button__icon'>
 							${unsafeHTML(iconPauseFilledHtml)}
 							${unsafeHTML(iconPlayFilledHtml)}
 						</span>
-						<span class='text'>
+						<span class='alternate-audio-player--action-button__text'>
 							${KalturaPlayerAPI.getMediaDuration(this.mediaCurrentTime)}
 						</span>
 					</button>
@@ -206,15 +199,15 @@ export class AudioPlayerAlternateDuo extends LitElement {
 						? nothing
 						: html`
 							<a
-								class='action-button download'
+								class='alternate-audio-player--action-button alternate-audio-player--action-button__download'
 								href='${this.buttonDownloadHref}'
 								download='${this.buttonDownloadFileName}'
 								aria-label='${this.buttonDownloadAriaLabel}'
 							>
-								<span class='icon'>
+								<span class='alternate-audio-player--action-button__icon'>
 									${unsafeHTML(this.getIcon(this.buttonDownloadIcon))}
 								</span>
-								<span class='text'>
+								<span class='alternate-audio-player--action-button__text'>
 									${this.buttonDownloadText}
 								</span>
 							</a>
