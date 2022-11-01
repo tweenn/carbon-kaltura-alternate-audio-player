@@ -18,7 +18,7 @@ const Template = ({
 	buttonDownloadHref = '',
 	buttonDownloadFileName = 'test-transcript.txt',
 	buttonDownloadText = '(TXT, -1KB)',
-	buttonDownloadIcon = 'quote',
+	buttonDownloadIcon = 'quotes',
 	buttonDownloadAriaLabel = 'Download Transcript for: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain"'
 }) => {
 	return html`
@@ -52,7 +52,7 @@ Duo.args = {
 	buttonDownloadHref: './transcript.txt',
 	buttonDownloadFileName: 'test-transcript.txt',
 	buttonDownloadText: '(TXT, -1KB)',
-	buttonDownloadIcon: 'quote',
+	buttonDownloadIcon: 'quotes',
 	buttonDownloadAriaLabel: 'Download Transcript for: "Test Audio - IBM Elevator Pitch Series EP1 - Supply Chain"'
 };
 
